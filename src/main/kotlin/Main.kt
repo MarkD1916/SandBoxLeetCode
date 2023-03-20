@@ -1,12 +1,56 @@
-import java.lang.Exception
+import java.util.LinkedList
+import java.util.Queue
 
 fun main(args: Array<String>) {
 
 }
 
+/**
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+([]{}) - тоже валидный вариант
+([))(] - не валидный вариант
+([]{]) - не валидный
+([]{)}
+([{}])
+([]{([{}])})
+([}}])
+ */
+//Одно из худших решений на литкоде, но оно есть :)))
+fun isValid(s: String): Boolean {
+    if (s.length % 2 != 0) return false
+    val closeList = listOf(')', ']', '}')
+    if (s.first() in closeList) return false
+    val openList = listOf('(', '[', '{')
+    val cache = ArrayDeque<Char>()
+    s.forEach {
+        if (it in openList) {
+            cache.addFirst(it)
+            openList.indexOf(it)
+        }
+
+        if (it in closeList) {
+            if (openList[closeList.indexOf(it)] == cache.firstOrNull()) {
+                cache.removeFirst()
+            } else {
+                return false
+            }
+        }
+
+        println(cache)
+    }
+
+    return cache.size == 0
+}
+
 fun twoSum(nums: IntArray, target: Int): IntArray {
     nums.apply {
-        forEachIndexed upperForEach@{ upperIndex, valueUpper ->
+        forEachIndexed { upperIndex, valueUpper ->
             forEachIndexed { bottomIndex, valueBottom ->
                 if ((valueUpper + valueBottom) == target && upperIndex != bottomIndex) return arrayOf(
                     upperIndex,
@@ -123,14 +167,14 @@ Example:
 /**
 var count = 0;
 run loop@ {
-    "hello".forEach {
-        if(it == 'h')
-        {
-            println("Exiting the forEach loop. Count is $count");
-            return@loop;
-        }
-        count++;
-    }
+"hello".forEach {
+if(it == 'h')
+{
+println("Exiting the forEach loop. Count is $count");
+return@loop;
+}
+count++;
+}
 }
  */
 //либо вообще вызвать возврат функции
@@ -151,10 +195,6 @@ fun longestCommonPrefix(strs: Array<String>): String {
 
     return prefix
 }
-
-
-
-
 
 
 
