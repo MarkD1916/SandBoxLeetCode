@@ -2,217 +2,60 @@ import java.util.LinkedList
 import java.util.Queue
 
 fun main(args: Array<String>) {
-//    val n = 3
-//    val edges = arrayOf(
-//        arrayListOf(
-//            0, 1
-//        ).toIntArray(),
-//        arrayListOf(
-//            0, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 2
-//        ).toIntArray(),
-//    )
+    val l1 = ListNode(0)
+    l1.next = ListNode(1)
+    l1.next?.next = ListNode(2)
 
-//    val n = 7
-//    val edges = arrayOf(
-//        arrayListOf(
-//            0, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            0, 5
-//        ).toIntArray(),
-//        arrayListOf(
-//            2, 4
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 6
-//        ).toIntArray(),
-//        arrayListOf(
-//            5, 4
-//        ).toIntArray(),
-//    )
+    val l2 = ListNode(0)
+    l2.next = ListNode(1)
+    l2.next?.next = ListNode(2)
 
-//    val n = 6
-//    val edges = arrayOf(
-//        arrayListOf(
-//            0, 1
-//        ).toIntArray(),
-//        arrayListOf(
-//            2, 3
-//        ).toIntArray(),
-//        arrayListOf(
-//            4, 5
-//        ).toIntArray()
-//    )
-    //expected 12
-
-//    val n = 5
-//    val edges = arrayOf(
-//        arrayListOf(
-//            1, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            3, 1
-//        ).toIntArray(),
-//        arrayListOf(
-//            0, 4
-//        ).toIntArray(),
-//        arrayListOf(
-//            2, 1
-//        ).toIntArray()
-//    )
-    //result 0
-//    val n = 5
-//    val edges = arrayOf(
-//        arrayOf(0,1).toIntArray(),
-//        arrayOf(1,2).toIntArray(),
-//        arrayOf(3,1).toIntArray(),
-//        arrayOf(4,0).toIntArray(),
-//    )
-
-    //[[5,0],[1,0],[10,7],[9,8],[7,2],[1,3],[0,2],[8,5],[4,6],[4,2]]
-//    val n = 11
-//    val edges = arrayOf(
-//        arrayListOf(
-//            5, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            10, 7
-//        ).toIntArray(),
-//        arrayListOf(
-//            9, 8
-//        ).toIntArray(),
-//        arrayListOf(
-//            7, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 3
-//        ).toIntArray(),
-//        arrayListOf(
-//            0, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            8, 5
-//        ).toIntArray(),
-//        arrayListOf(
-//            4, 6
-//        ).toIntArray(),
-//        arrayListOf(
-//            4, 2
-//        ).toIntArray(),
-//    )
-
-    //[[13,3],[10,1],[6,2],[7,8],[15,0],[0,2],[9,1],[7,11],[3,0],[3,5],[2,7],[6,17],[12,11],[6,16],[3,4],[14,9],[1,0],[18,2],[1,19]]
-//    val n = 20
-//    val edges = arrayOf(
-//        arrayListOf(
-//            13, 3
-//        ).toIntArray(),
-//        arrayListOf(
-//            10, 1
-//        ).toIntArray(),
-//        arrayListOf(
-//            6, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            7, 8
-//        ).toIntArray(),
-//        arrayListOf(
-//            15, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            0, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            9, 1
-//        ).toIntArray(),
-//        arrayListOf(
-//            7, 11
-//        ).toIntArray(),
-//        arrayListOf(
-//            3, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            3, 5
-//        ).toIntArray(),
-//        arrayListOf(
-//            2, 7
-//        ).toIntArray(),
-//        arrayListOf(
-//            6, 17
-//        ).toIntArray(),
-//        arrayListOf(
-//            12, 11
-//        ).toIntArray(),
-//        arrayListOf(
-//            6, 16
-//        ).toIntArray(),
-//        arrayListOf(
-//            3, 4
-//        ).toIntArray(),
-//        arrayListOf(
-//            14, 9
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 0
-//        ).toIntArray(),
-//        arrayListOf(
-//            18, 2
-//        ).toIntArray(),
-//        arrayListOf(
-//            1, 19
-//        ).toIntArray(),
-//    )
-
-//    val n = 12
-//    val edges = arrayOf(
-//        arrayListOf(
-//            2, 6
-//        ).toIntArray(), arrayListOf(
-//            11, 3
-//        ).toIntArray(), arrayListOf(
-//            5, 4
-//        ).toIntArray(), arrayListOf(
-//            9, 6
-//        ).toIntArray()
-//    )
-
-    val n = 16
-    val edges = arrayOf(
-        arrayListOf(
-            0, 15
-        ).toIntArray(),
-        arrayListOf(
-            1, 14
-        ).toIntArray(),
-        arrayListOf(
-            2, 11
-        ).toIntArray(),
-        arrayListOf(
-            4, 3
-        ).toIntArray(),
-        arrayListOf(
-            5, 15
-        ).toIntArray(),
-        arrayListOf(
-            8, 2
-        ).toIntArray(),
-        arrayListOf(
-            14, 12
-        ).toIntArray()
-    )
-    //[[0,15],[1,14],[2,11],[4,3],[5,15],[8,2],[14,12]]
-    //result 110
-
-    val result = countPairs(n, edges)
-    println(result)
+    addTwoNumbers(l1, l2)
 }
 
+/**
+ * Example:
+ * var li = ListNode(5)
+ * var v = li.`val`
+ * Definition for singly-linked list.
+ * class ListNode(var `val`: Int) {
+ *     var next: ListNode? = null
+ * }
+ *
+ * Input: l1 = [2,4,3], l2 = [5,6,4]
+ * Output: [7,0,8]
+ * Explanation: 342 + 465 = 807.
+ */
+//не мое решение, но оно мне очень понравилось и кажется наиболее удачным
+class ListNode(var value: Int) {
+    var next: ListNode? = null
+}
+
+fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
+    return addTwoNumbers(l1, l2, 0)
+}
+
+fun addTwoNumbers(l1: ListNode?, l2: ListNode?, unitItMind: Int): ListNode {
+    if (l1?.next != null || l2?.next != null) {
+        val sum = (l2?.value ?: 0) + (l1?.value ?: 0) + unitItMind
+        return if (sum > 9) {
+            val listNode = addTwoNumbers(l1?.next, l2?.next, 1)
+            ListNode(sum - 10).apply { next = listNode }
+        } else {
+            val listNode = addTwoNumbers(l1?.next, l2?.next, 0)
+            ListNode(sum).apply { next = listNode }
+        }
+    } else {
+        val sum = (l2?.value ?: 0) + (l1?.value ?: 0) + unitItMind
+        return if (sum > 9) {
+            ListNode(sum - 10).apply { next = ListNode(1) }
+        } else {
+            ListNode(sum)
+        }
+    }
+}
+
+// валится на ошибке скорости выполнения, но пока что более хорошего варианта не придумал
 fun countPairs(n: Int, edges: Array<IntArray>): Long {
     val all = ((n * (n - 1)) / 2)
     if (edges.isEmpty()) return all.toLong()
