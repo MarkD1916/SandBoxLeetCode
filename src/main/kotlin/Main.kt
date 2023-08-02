@@ -1,16 +1,22 @@
-import java.util.LinkedList
-import java.util.Queue
-
 fun main(args: Array<String>) {
-    val l1 = ListNode(0)
-    l1.next = ListNode(1)
-    l1.next?.next = ListNode(2)
 
-    val l2 = ListNode(0)
-    l2.next = ListNode(1)
-    l2.next?.next = ListNode(2)
 
-    addTwoNumbers(l1, l2)
+
+}
+
+//https://leetcode.com/problems/remove-duplicates-from-sorted-array/?envType=list&envId=ewl7u8si
+//removeDuplicates(arrayOf(0,0,1,1,1,2,2,3,3,4).toIntArray()) in main
+fun removeDuplicates(nums: IntArray): Int {
+    var uniSymbol = nums[0]
+    var uniCount = if(nums.isNotEmpty()) 1 else nums.size
+    for (i in nums) {
+        if(uniSymbol < i) {
+            uniSymbol = i
+            uniCount++
+        }
+    }
+    println(uniCount)
+    return uniCount
 }
 
 /**
@@ -26,6 +32,16 @@ fun main(args: Array<String>) {
  * Output: [7,0,8]
  * Explanation: 342 + 465 = 807.
  */
+//in main
+//val l1 = ListNode(0)
+//l1.next = ListNode(1)
+//l1.next?.next = ListNode(2)
+//
+//val l2 = ListNode(0)
+//l2.next = ListNode(1)
+//l2.next?.next = ListNode(2)
+//
+//addTwoNumbers(l1, l2)
 //не мое решение, но оно мне очень понравилось и кажется наиболее удачным
 class ListNode(var value: Int) {
     var next: ListNode? = null
